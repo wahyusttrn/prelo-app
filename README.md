@@ -5,6 +5,7 @@ This project is built under Vanilla HTML CSS JS with Bootstrap as toppings.
 This project is made for Hactiv8 Phase 0 Hackathon.
 
 ## Development Rules
+- right after you clone or pull this repository, you need to make another branch to every feature you are developing named `<features>-<yourname>`.
 - the place of this `README.md` file is called `root` directory. which also consist of `index.html`, `style.css`, and `script.js`.
 - to make every new page, first you'll need to make a `child` directory named after the page you wanted to make, then you can add the `html` file named `index.html` and add another `css` and `javascript` file **if needed**. (just like the `login` directory that already exist).
 - you can always add another `child` directory inside the `child` directory as much as needed.
