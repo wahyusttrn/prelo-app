@@ -9,9 +9,19 @@
 </head>
 <body>
   <h1>Hello World</h1>
+  <h3 id="welcome">Anda belum login</h3>
+  <button onclick="logout()">Logout</button>
   <p>This is sample Login page</p>
-  <input id="username" type="text" placeholder="type your username here">
-  <button onclick="login()">login</button>
+
+  <form onsubmit="login(event)">
+    <label for="username">Username:</label><br>
+    <input id="username" type="text" placeholder="type your username here"><br><br>
+    <label for="password">Password:</label><br>
+    <input id="password" type="password" placeholder="type your password here"><br><br>
+    <button type="submit">Login</button>
+    <button onclick="goBack()">back</button>
+  </form>
+  
 
   <script src="script.js"></script>
 </body>

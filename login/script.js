@@ -1,9 +1,59 @@
-function login() {
-  const username = document.getElementById('username');
-  if (username.value === 'budi') {
-    alert('kamu berhasil login!');
-    location.href = '../'; //this is how we get to parent directory
-  } else {
-    alert('maaf, kamu bukan budi');
+let databases = [
+  {
+  id: "Amar",
+  username: "Amaroar",
+  password: "Kucing123",
+  fullName: "Amar Khishir",
+  Email: "Amar@Hacktiv8.ac",
   }
+]
+
+function login(loggedIn) {
+  loggedIn.preventDefault();
+  const usernameInput = document.getElementById('username').value;
+  const passwordInput = document.getElementById('password').value;
+
+  // mencocokan data apakah user meng-input data sama dengan data didalam databases
+  let telahLogin  = false
+  let nameUser    = ""
+  for (let i = 0; i < databases.length; i++) {
+    const usernameData  = databases[i].username     // Amaroar
+    const passwordData  = databases[i].password     // Kucing123
+    const fullNameData  = databases[i].fullName     // Amar Khishir
+    if ((usernameInput === usernameData) && (passwordInput === passwordData)) {
+      telahLogin  = true
+      nameUser = fullNameData     // nama yang akan muncul nama panjang
+      localStorage.setItem("loginStatus","Online");
+      localStorage.setItem("username", usernameData);
+      localStorage.setItem("fullName", fullNameData)
+      break;
+    }
+  }
+  
+  // alert jika berhasil login atau tidak berhasil
+  if (telahLogin) {
+    alert('kamu berhasil login!');
+    greeting(nameUser)      // jika berhasil login, maka akan merubah teks
+    // location.href = '../'
+  } else {
+    alert('maaf, kamu salah');
+  }
+}
+
+function logout() {
+  localStorage.removeItem("loginStatus");
+  localStorage.removeItem("username");
+  localStorage.removeItem("fullName");
+  location.reload();      // refresh page
+}
+
+function greeting(nameUser) {
+  const greeting = document.getElementById("welcome");
+  if (greeting) {
+    greeting.textContent = `Selamat datang, ${nameUser}!`;
+  }
+}
+
+function goBack() {
+  location.href = '../';      //this is how we get to parent directory
 }
