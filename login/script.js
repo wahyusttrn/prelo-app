@@ -1,6 +1,6 @@
 let databases = [
   {
-  id: "Amar", //!id seharusnya bertipe Number dimulai dari 1 dan ter-generate otomatis
+  id: "Amar", //id seharusnya bertipe Number dimulai dari 1 dan ter-generate otomatis
   username: "Amaroar",
   password: "Kucing123",
   fullName: "Amar Khishir",
@@ -23,7 +23,7 @@ function login(loggedIn) {
     if ((usernameInput === usernameData) && (passwordInput === passwordData)) {
       telahLogin  = true
       nameUser = fullNameData     // nama yang akan muncul nama panjang
-      localStorage.setItem("loginStatus","Online");
+      localStorage.setItem("loginStatus","Online"); // value loginStatus sebaiknya gunakan boolean saja
       localStorage.setItem("username", usernameData);
       localStorage.setItem("fullName", fullNameData)
       break;
@@ -31,7 +31,7 @@ function login(loggedIn) {
   }
   
   // alert jika berhasil login atau tidak berhasil
-  if (telahLogin) {
+  if (telahLogin) { // disini validasi nya sebaiknya gunakan loginStatus di localStorage supaya lebih universal, sehingga variabel telah login tidak diperlukan. nanti set di localStorage untuk nilai default dari loginStatus assign false.
     alert('kamu berhasil login!');
     greeting(nameUser)      // jika berhasil login, maka akan merubah teks
     // location.href = '../'
