@@ -1,6 +1,6 @@
 let databases = [
   {
-  id: "Amar",
+  id: "Amar", //!id seharusnya bertipe Number dimulai dari 1 dan ter-generate otomatis
   username: "Amaroar",
   password: "Kucing123",
   fullName: "Amar Khishir",
