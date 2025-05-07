@@ -32,108 +32,25 @@
     </div>
   </nav>
   <section class="container-sm">
-    <h1>Best Selling</h1>
-    <div class="container row row-cols-4 text-center">
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1>Best sellings</h1>
+    <div class="container row row-cols-xxl-auto" id="best-selling"></div>
   </section>
   <section class="container-sm">
-    <h1>You may need this</h1>
-    <div class="container row row-cols-4 text-center">
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <div class="container-sm">
-        <div class="card" style="width: 18rem;">
-          <img src="https://info.ehl.edu/hubfs/1440/1440x960-spices.jpg" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
+    <h1>You may need</h1>
+    <div class="btn-group" role="group">
+      <button type="button" onclick="categoryRender('furniture')" class="btn btn-outline-primary">Furniture</button>
+      <button type="button" onclick="categoryRender('education')" class="btn btn-outline-primary">Education</button>
+      <button type="button" onclick="categoryRender('automotive')" class="btn btn-outline-primary">Automotive</button>
+      <button type="button" onclick="categoryRender('clothes')" class="btn btn-outline-primary">Clothes</button>
     </div>
+    <div class="container row row-cols-xxl-auto" id="category"></div>
   </section>
-  <h1>All catalogue</h1>
+  <section class="container-sm">
+    <h1>All catalogue</h1>
+    <div class="container row row-cols-xxl-auto" id="all-catalogue"></div>
+  </section>
   
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
