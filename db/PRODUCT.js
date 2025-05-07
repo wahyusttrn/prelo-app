@@ -225,3 +225,5 @@ const PRODUCT = [
     ]
   },
 ]
+
+export default PRODUCT;
