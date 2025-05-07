@@ -13,30 +13,25 @@ function login(loggedIn) {
   const usernameInput = document.getElementById('username').value;
   const passwordInput = document.getElementById('password').value;
 
-  // mencocokan data apakah user meng-input data sama dengan data didalam databases
-  let telahLogin  = false
-  let nameUser    = ""
+  let nameUser = "";
+
   for (let i = 0; i < databases.length; i++) {
-    const usernameData  = databases[i].username     // Amaroar
-    const passwordData  = databases[i].password     // Kucing123
-    const fullNameData  = databases[i].fullName     // Amar Khishir
-    if ((usernameInput === usernameData) && (passwordInput === passwordData)) {
-      telahLogin  = true
-      nameUser = fullNameData     // nama yang akan muncul nama panjang
-      localStorage.setItem("loginStatus","Online"); // value loginStatus sebaiknya gunakan boolean saja
-      localStorage.setItem("username", usernameData);
-      localStorage.setItem("fullName", fullNameData)
+    const { username, password, fullName } = databases[i];
+    if (usernameInput === username && passwordInput === password) {
+      localStorage.setItem("loginStatus", true);
+      localStorage.setItem("username", username);
+      localStorage.setItem("fullName", fullName);
+      nameUser = fullName;
       break;
     }
   }
-  
-  // alert jika berhasil login atau tidak berhasil
-  if (telahLogin) { // disini validasi nya sebaiknya gunakan loginStatus di localStorage supaya lebih universal, sehingga variabel telah login tidak diperlukan. nanti set di localStorage untuk nilai default dari loginStatus assign false.
-    alert('kamu berhasil login!');
-    greeting(nameUser)      // jika berhasil login, maka akan merubah teks
-    // location.href = '../'
+
+  if (nameUser) {
+    alert('Kamu berhasil login!');
+    greeting(nameUser);
+    location.href = '../home'; // Redirect ke halaman utama setelah login
   } else {
-    alert('maaf, kamu salah');
+    alert('Maaf, kamu salah');
   }
 }
 

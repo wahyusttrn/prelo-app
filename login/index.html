@@ -8,20 +8,25 @@
   <link rel="stylesheet" href="../style.css"> <!-- second import css from root directory -->
 </head>
 <body>
-  <h1>Hello World</h1>
+  <div class="login-container" onsubmit="login(event)">
+    <div class="login-box">
+      <h2>Login to Prelo</h2>
+
+      <form >
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="type your username here">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="type your password here">
+        <button id="login" type="submit">Login</button>
+      </form>
+
   <h3 id="welcome">Anda belum login</h3>
   <button onclick="logout()">Logout</button>
-  <p>This is sample Login page</p>
-
-  <form onsubmit="login(event)">
-    <label for="username">Username:</label><br>
-    <input id="username" type="text" placeholder="type your username here"><br><br>
-    <label for="password">Password:</label><br>
-    <input id="password" type="password" placeholder="type your password here"><br><br>
-    <button type="submit">Login</button>
-    <button onclick="goBack()">back</button>
-  </form>
+  <button onclick="goBack()">back</button>
   
+
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
