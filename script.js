@@ -2,47 +2,37 @@ import PRODUCTS from "./db/PRODUCTS.js";
 
 //add to cart function
 function addToCart(id) {
-  alert(`Selamat! ${PRODUCTS[id-1].name} sudah masuk ke keranjang kamu!`);
-  PRODUCTS[id-1].stock -= 1;
-}
-
-function sellingSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - i - 1; j++) {
-      if (arr[j].sellings < arr[j+1].sellings) {
-        let temp = arr[j];
-        arr[j] = arr[j+1];
-        arr[j+1] = temp;
-      }
-    }
+  if (!localStorage.getItem("username")) {
+    location.href = '/login';
+    return;
   }
-  return arr;
+  alert(`Selamat! ${PRODUCTS[id-1].name} sudah masuk ke keranjang kamu!`);
 }
 
 //render best selling
+const sortedProduct = PRODUCTS.slice().sort((a, b) => b.sellings - a.sellings);
 function renderBestSellings() {
   let result = '';
   for (let i = 0; i < 4; i++) {
-    const product = sellingSort(PRODUCTS)[i];
-    const formattedAmount = (product.price).toLocaleString('id-ID', { 
+    const formattedAmount = (sortedProduct[i].price).toLocaleString('id-ID', { 
       style: 'currency', 
       currency: 'IDR' 
     });
     result += `
       <div class="col">
-        <a href="#" class="text-decoration-none text-dark">
-          <div class="card h-100 shadow-sm">
-            <div style="width: 100%; height: 12rem"><img src="${product.imgURL}" class="card-img-top" alt="${product.name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
+        <div class="card h-100 shadow-sm">
+          <a href="./product#${sortedProduct[i].id}" class="text-decoration-none text-dark">
+            <div style="width: 100%; height: 12rem"><img src="${sortedProduct[i].imgURL}" class="card-img-top" alt="${sortedProduct[i].name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${product.name}</h5>
-              <p class="card-text text-muted">Sold: ${product.sellings} Stock: ${product.stock}</p>
+              <h5 class="card-title">${sortedProduct[i].name}</h5>
+              <p class="card-text text-muted">Sold: ${sortedProduct[i].sellings} Stock: ${sortedProduct[i].stock}</p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <span class="fw-bold text-primary">${formattedAmount}</span>
-                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                </a>
+                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(${sortedProduct[i].id})">Add to Cart</button>
               </div>
             </div>
           </div>
-        </a>
       </div>
     `
   }
@@ -62,37 +52,37 @@ function categoryRender(category) {
     if (product.category === category) {
       result += `
         <div class="col">
-          <a href="#" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm">
+        <a href="./product#${product.id}" class="text-decoration-none text-dark">
               <div style="width: 100%; height: 12rem"><img src="${product.imgURL}" class="card-img-top" alt="${product.name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text text-muted">Sold: ${product.sellings} Stock: ${product.stock}</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
-                  <span class="fw-bold text-primary">${formattedAmount}</span>
+                <span class="fw-bold text-primary">${formattedAmount}</span>
+                </a>
                   <button class="btn btn-sm btn-outline-primary" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
               </div>
             </div>
-          </a>
         </div>
       ` 
     } else if (category === 'All') {
       result += `
         <div class="col">
-          <a href="#" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm">
+        <a href="./product#${product.id}" class="text-decoration-none text-dark">
               <div style="width: 100%; height: 12rem"><img src="${product.imgURL}" class="card-img-top" alt="${product.name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text text-muted">Sold: ${product.sellings} Stock: ${product.stock}</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
-                  <span class="fw-bold text-primary">${formattedAmount}</span>
+                <span class="fw-bold text-primary">${formattedAmount}</span>
+                </a>
                   <button class="btn btn-sm btn-outline-primary" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
               </div>
             </div>
-          </a>
         </div>
       ` 
     }
