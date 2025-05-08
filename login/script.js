@@ -1,17 +1,7 @@
 import USERS from '../db/USERS.js';
+
 const form = document.getElementById('loginForm');
 form.addEventListener('submit', login);
-
-// let USER = [
-//   {
-//   id: 99,
-//   username: "Amaroar",
-//   password: "Kucing123",
-//   fullName: "Amar Khishir",
-//   Email: "Amar@Hacktiv8.ac",
-//   }
-// ]
-
 function login(loggedIn) {
   loggedIn.preventDefault();
   const usernameInput = document.getElementById('username').value;
@@ -46,16 +36,16 @@ function logout() {
   location.reload();      // refresh page
 }
 
-function greeting(nameUser) {
-  const greeting = document.getElementById("welcome");
-  if (greeting) {
-    greeting.innerText = `Selamat datang, ${nameUser}!`;
-  }
-}
-
 function goBack() {
   location.href = '../';      //this is how we get to parent directory
 }
+
+// function greeting(nameUser) {
+//   const greeting = document.getElementById("welcome");
+//   if (greeting) {
+//     greeting.innerText = `Selamat datang, ${nameUser}!`;
+//   }
+// }
 
 window.login   = login;
 window.logout  = logout;

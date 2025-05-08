@@ -7,22 +7,17 @@ body {
   justify-content: center;
   align-items: center;
 }
-h1 {
-  color: tomato;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  text-align: left;
-}
 
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.logo-prolo {
+  width: 200px;
+  height: 80%;
 }
 
 .login-box {
@@ -35,6 +30,13 @@ form {
   text-align: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
 #username, #password {
   padding: 10px;
   border-radius: 6px;
@@ -42,7 +44,7 @@ form {
   font-size: 14px;
 }
 
-#login {
+#login, #signUp {
   padding: 10px;
   border-radius: 30px;
   border-style: hidden;
@@ -52,7 +54,15 @@ form {
   color: aliceblue;
 }
 
-.logo-prolo {
-  width: 200px;
-  height: 80%;
+.mini-btn {
+  margin-left: auto;
+  width: fit-content;
+  justify-content:right;
+  padding: 8px 12px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
