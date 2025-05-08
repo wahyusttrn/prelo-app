@@ -25,6 +25,7 @@ function login(loggedIn) {
       localStorage.setItem("loginStatus", JSON.stringify(true));
       localStorage.setItem("username", username);
       localStorage.setItem("fullName", namaLengkap);
+      localStorage.setItem("currentUser", JSON.stringify(USERS[i]));
       nameUser = namaLengkap;
       break;
     }

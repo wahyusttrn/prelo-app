@@ -33,13 +33,16 @@
   }
   
   .sidebar h2 {
-    font-size: 26px;
+    /* font-size: 26px; */
     /* margin-bottom: 20px; */
-    margin-bottom: 2rem;
+    /* margin-bottom: 1px; */
     color: #facc15;
     text-align: center;
-  
-    font-size: 1.8rem;
+    width: 170;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+    /* font-size: 1.8rem; */
   }
   
   .sidebar button {

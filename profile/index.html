@@ -9,23 +9,23 @@
 <body>
   <div class="container">
     <aside class="sidebar">
-      <h2>Prelo</h2>
+      <div style="text-align: center;">
+        <h2>
+          <img src="../public/essential_img/logo_transparent.png" width="170">
+        </h2>
+      </div>
       <button onclick="loadContent('profile')">✏️ Edit Profile</button>
       <button onclick="loadContent('products')">📦 My Products</button>
       <button onclick="loadContent('cart')">🛒 Cart</button>
-      <!-- <a href="./edit-profile/">✏️ Edit Profile</a>
-      <a href="./my-product/">📦 My Products</a>
-      <a href="./cart/">🛒 Cart</a> -->
     </aside>
-
     <main class="main-content">
-      <h1>Welcome to Your Profile</h1>
+      <h1 id="mainTitle">Welcome to Your Profile</h1>
+      <div id="profileInfo"></div>
       <div id="content">
         <p>Select a menu from the sidebar.</p>
       </div>
     </main>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
