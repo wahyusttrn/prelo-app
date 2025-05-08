@@ -7,18 +7,28 @@ function login(loggedIn) {
   loggedIn.preventDefault();
   const usernameInput = document.getElementById('username').value;
   const passwordInput = document.getElementById('password').value;
-  let nameUser = "";
-  for (let i = 0; i < USERS.length; i++) {
-    const { username, password, namaLengkap } = USERS[i];
-    if (usernameInput === username && passwordInput === password) {
-      localStorage.setItem("loginStatus", JSON.stringify(true));
-      localStorage.setItem("username", username);
-      localStorage.setItem("namaLengkap", namaLengkap);
-      nameUser = namaLengkap;
+
+  // validasi input, apakah data sudah ada di local storage
+  let storedUsers = JSON.parse(localStorage.getItem('USERS'));
+  if (!storedUsers) {
+    storedUsers = USERS;
+  }
+
+  // mencari user yang sesuai dengan input
+  let onlineUser = false;
+  for (let i = 0; i < storedUsers.length; i++) {  // loop local storage
+    const { username, password, namaLengkap } = storedUsers[i]; 
+    if (usernameInput === username && passwordInput === password) {   // jika username dan password sesuai
+      onlineUser = true;  // maka onlineUser menjadi true  
+      localStorage.setItem("loginStatus", JSON.stringify(true));      // set login status dengan true, karena bolean maka dirubah menjadi string
+      localStorage.setItem("username", username); 
+      localStorage.setItem("namaLengkap", namaLengkap); 
       break;
     }
   }
-  if (JSON.parse(localStorage.getItem('loginStatus')) === true) {
+
+  // alert apakah login berhasil atau tidak
+  if (onlineUser) {   // true
     alert('Kamu berhasil login!');
     location.href = '../'; // Redirect ke halaman utama setelah login
   } else {
@@ -27,7 +37,7 @@ function login(loggedIn) {
 }
 
 function signUp() {
-  location.href = '../sign up/index.html'   // sign up\index.html
+  location.href = '../sign up/index.html'   // signup\index.html
 }
 
 function goBack() {

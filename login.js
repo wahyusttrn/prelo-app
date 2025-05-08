@@ -11,3 +11,10 @@ function checkLogin() {
     }
   }
 checkLogin()
+
+function logout() {
+    localStorage.removeItem("loginStatus");
+    localStorage.removeItem("username");
+    localStorage.removeItem("namaLengkap");
+    location.reload();      // refresh page
+  }
