@@ -1,32 +1,22 @@
-function loadContent(page) {
-    let content = document.getElementById("content")
-    content.innerHTML = ""
+import { loadEditProfile } from "./edit/index.js";
+import { loadMyProducts } from "./my-product/index.js";
+import { loadCart } from "./cart/index.js";
 
-    if (page === "profile") {
-        content.innerHTML = `
-        <h2>Edit Profile</h2>
-            <form id="editProfile">
-            <label>Username</label>
-            <input type="text" id="username" required>
-            
-            <label>Email</label>
-            <input type="email" id="email" required>
-            
-            <label>Password Lama</label>
-            <input type="text" id="OldPassword" required>
-            
-            <label>Password Baru</label>
-            <input type="password" id="newPassword" required>
-            
-            <button type="submit">Simpan Perubahan</button>
-            </form>`
-    } else if (page === "products") {
-        content.innerHTML = `
-        <h2>My Products</h2>
-        <p>This is the My Products page</p>`
-    } else if (page === "cart") {
-        content.innerHTML = `
-        <h2>My Cart</h2>
-        <p>This is the Cart page</p>`
-    }
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadContent('profile');
+});
+
+export function loadContent(page) {
+  if (page === 'profile') loadEditProfile();
+  if (page === 'products') loadMyProducts();
+  if (page === 'cart') loadCart();
+}
+
+export function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('currentUser')) || null;
+}
+
+export function saveCurrentUser(user) {
+  localStorage.setItem('currentUser', JSON.stringify(user));
 }
