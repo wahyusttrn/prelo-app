@@ -1,12 +1,16 @@
-let databases = [
-  {
-  id: "Amar", //id seharusnya bertipe Number dimulai dari 1 dan ter-generate otomatis
-  username: "Amaroar",
-  password: "Kucing123",
-  fullName: "Amar Khishir",
-  Email: "Amar@Hacktiv8.ac",
-  }
-]
+import USER from '../db/user.js';
+const form = document.getElementById('loginForm');
+form.addEventListener('submit', login);
+
+// let USER = [
+//   {
+//   id: 99,
+//   username: "Amaroar",
+//   password: "Kucing123",
+//   fullName: "Amar Khishir",
+//   Email: "Amar@Hacktiv8.ac",
+//   }
+// ]
 
 function login(loggedIn) {
   loggedIn.preventDefault();
@@ -15,21 +19,21 @@ function login(loggedIn) {
 
   let nameUser = "";
 
-  for (let i = 0; i < databases.length; i++) {
-    const { username, password, fullName } = databases[i];
+  for (let i = 0; i < USER.length; i++) {
+    const { username, password, namaLengkap } = USER[i];
     if (usernameInput === username && passwordInput === password) {
-      localStorage.setItem("loginStatus", true);
+      localStorage.setItem("loginStatus", JSON.stringify(true));
       localStorage.setItem("username", username);
-      localStorage.setItem("fullName", fullName);
-      nameUser = fullName;
+      localStorage.setItem("fullName", namaLengkap);
+      nameUser = namaLengkap;
       break;
     }
   }
 
-  if (nameUser) {
+  if (JSON.parse(localStorage.getItem('loginStatus')) === true) {
     alert('Kamu berhasil login!');
     greeting(nameUser);
-    location.href = '../home'; // Redirect ke halaman utama setelah login
+    location.href = '../'; // Redirect ke halaman utama setelah login
   } else {
     alert('Maaf, kamu salah');
   }
@@ -45,10 +49,14 @@ function logout() {
 function greeting(nameUser) {
   const greeting = document.getElementById("welcome");
   if (greeting) {
-    greeting.textContent = `Selamat datang, ${nameUser}!`;
+    greeting.innerText = `Selamat datang, ${nameUser}!`;
   }
 }
 
 function goBack() {
   location.href = '../';      //this is how we get to parent directory
 }
+
+window.login   = login;
+window.logout  = logout;
+window.goBack  = goBack;

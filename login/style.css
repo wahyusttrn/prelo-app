@@ -52,6 +52,7 @@ form {
   color: aliceblue;
 }
 
-button:hover {
-  background-color: #000000;
+.logo-prolo {
+  width: 200px;
+  height: 80%;
 }
