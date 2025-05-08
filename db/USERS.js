@@ -24,7 +24,7 @@ const USERS = [
   id: 99,
   email: "Amar@Hacktiv8.ac",
   username: "Amaroar",
-  password: "Kucing123",
+  password: "Kucing-123",
   namaLengkap: "Amar Khishir",
   }
 ];
