@@ -1,6 +1,6 @@
 function checkLogin() {
     let loginStatus = JSON.parse(localStorage.getItem("loginStatus"));
-    let namaLengkap = localStorage.getItem("fullName");
+    let namaLengkap = localStorage.getItem("namaLengkap");
   
     if ((loginStatus) === true) {
       // berubah menjadi selamat datang nama panjang

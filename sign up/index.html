@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prelo</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="../style.css"> <!-- second import css from root directory -->
+  <link rel="stylesheet" href="../style.css">
 </head>
 </head>
 <body>
-  <div class="login-container">
-    <div class="login-box">
-      <img src="../public/essential_img/logo_transparent.png" class="logo-prolo" alt="Prelo Logo" />
+  <div class="signup-container">
+    <div class="signup-box">
+      <img src="../public/essential_img/logo_transparent.png" class="logo-prolo">
       <h2>Create Your Prelo Account</h2>
 
       <form onsubmit="signUp(event)">
@@ -27,12 +27,12 @@
         <label for="fullName">Full Name</label>
         <input id="fullName" type="text" placeholder="Your full name" required />
 
-        <button type="submit">Sign Up</button>
+        <button id="signUp" type="submit">Sign Up</button>
         <button class="mini-btn" onclick="goBack()">back</button>
       </form>
     </div>
   </div>
-
+  <p>namaLengkap</p>
   <script type="module" src="script.js"></script>
 </body>
 </html>
