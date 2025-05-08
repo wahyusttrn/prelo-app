@@ -190,6 +190,20 @@
     border-radius: 8px;
   }
 
+  .product-card h4 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .product-card button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #ff6600;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
   .product-card:hover{
     transform: translateY(-5px);
 }
