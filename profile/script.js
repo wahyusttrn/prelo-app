@@ -14,11 +14,11 @@ function loadContent(page) {
 
 
 function checkLoginStatus() {
-  const user = getCurrentUser(); 
+  const user = localStorage.getItem('username'); 
 
   if (!user) {
     alert('Silakan login terlebih dahulu.');
-    window.location.href = '../login/index.html';
+    window.location.href = '/login';
   } else {
     
     document.getElementById('profileInfo').innerHTML = `
@@ -33,19 +33,6 @@ function checkLoginStatus() {
 function logout() {
   localStorage.removeItem('currentUser'); 
   window.location.href = 'login/login.html'; 
-}
-
-// ---------------- LOGIN ----------------
-function login() {
-  const username = document.getElementById("username").value;
-  if (username === "budi") {
-    const user = { username: "budi", email: "budi@mail.com", password: "password123" };
-    saveCurrentUser(user);
-    alert("Kamu berhasil login!");
-    window.location.href = "profile.html"; 
-  } else {
-    alert("Maaf, kamu bukan budi");
-  }
 }
 
 // ---------------- EDIT PROFILE ----------------

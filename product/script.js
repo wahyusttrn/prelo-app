@@ -57,7 +57,7 @@ for (let i = 0; i < product.reviews.length; i++) {
 document.getElementById('product-review').innerHTML = review;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const fullName = localStorage.getItem("fullName");
+  const fullName = localStorage.getItem("namaLengkap");
   const productReviewsKey = `reviews_${product.id}`;
   const savedReviews = JSON.parse(localStorage.getItem(productReviewsKey)) || product.reviews;
 
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("reviewForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!fullName) {
+    if (!localStorage.getItem('username')) {
       alert('Anda belum login!');
       location.href = '/login';
       return;
