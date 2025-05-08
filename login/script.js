@@ -20,7 +20,6 @@ function login(loggedIn) {
   }
   if (JSON.parse(localStorage.getItem('loginStatus')) === true) {
     alert('Kamu berhasil login!');
-    greeting(nameUser);
     location.href = '../'; // Redirect ke halaman utama setelah login
   } else {
     alert('Maaf, kamu salah');
@@ -34,13 +33,6 @@ function signUp() {
 function goBack() {
   location.href = '../';      //this is how we get to parent directory
 }
-
-window.login   = login;
-window.signUp  = signUp;
-window.goBack  = goBack;
-window.logout  = logout;
-
-
 function logout() {
   localStorage.removeItem("loginStatus");
   localStorage.removeItem("username");
@@ -48,9 +40,6 @@ function logout() {
   location.reload();      // refresh page
 }
 
-// function greeting(nameUser) {
-//   const greeting = document.getElementById("welcome");
-//   if (greeting) {
-//     greeting.innerText = `Selamat datang, ${nameUser}!`;
-//   }
-// }
+window.signUp  = signUp;
+window.goBack  = goBack;
+window.logout  = logout;
