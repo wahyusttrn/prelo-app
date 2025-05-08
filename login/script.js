@@ -43,13 +43,6 @@ function signUp() {
 function goBack() {
   location.href = '../';      //this is how we get to parent directory
 }
-function logout() {
-  localStorage.removeItem("loginStatus");
-  localStorage.removeItem("username");
-  localStorage.removeItem("namaLengkap");
-  location.reload();      // refresh page
-}
 
 window.signUp  = signUp;
 window.goBack  = goBack;
-window.logout  = logout;
