@@ -13,7 +13,7 @@ function login(loggedIn) {
     if (usernameInput === username && passwordInput === password) {
       localStorage.setItem("loginStatus", JSON.stringify(true));
       localStorage.setItem("username", username);
-      localStorage.setItem("fullName", namaLengkap);
+      localStorage.setItem("namaLengkap", namaLengkap);
       nameUser = namaLengkap;
       break;
     }
@@ -44,7 +44,7 @@ window.logout  = logout;
 function logout() {
   localStorage.removeItem("loginStatus");
   localStorage.removeItem("username");
-  localStorage.removeItem("fullName");
+  localStorage.removeItem("namaLengkap");
   location.reload();      // refresh page
 }
 
