@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prelo</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="../style.css"> <!-- second import css from root directory -->
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
   <div class="login-container">
@@ -13,22 +13,18 @@
       <img src="../public/essential_img/logo_transparent.png" class="logo-prolo">
       <h2>Login to Prelo</h2>
 
-      <form id="loginForm" onsubmit="login(event)">
+      <form id="loginForm">
         <label for="username">Username</label>
         <input id="username" type="text" placeholder="type your username here">
         <label for="password">Password</label>
-        <input id="password" type="text" placeholder="type your password here">
+        <input id="password" type="password" placeholder="type your password here">
         <button id="login" type="submit">Login</button>
+        <button class="signUp" onclick="signUp()">Sign Up</button>
+        <button class="mini-btn" onclick="goBack()">back</button>
       </form>
-
-  <h3 id="welcome">Anda belum login</h3>
-  <button onclick="logout()">Logout</button>
-  <button onclick="goBack()">back</button>
-  
 
   </div>
 </div>
-
 <script type="module" src="script.js"></script>
 </body>
 </html>
