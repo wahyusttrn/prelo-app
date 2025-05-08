@@ -6,7 +6,7 @@ function checkLogin() {
       // berubah menjadi selamat datang nama panjang
       const greeting = document.getElementById("welcome");
       if (greeting) {
-      greeting.innerText = `Selamat datang, ${namaLengkap}!`;
+      greeting.innerText = `Mau belanja apa hari ini, ${namaLengkap}?`;
       }
       document.getElementById('login-btn').style.display = 'none';
     } else {

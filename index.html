@@ -41,24 +41,23 @@
     </div>
   </nav>
   
-  <section class="container-sm">
-    <h1>Best sellings</h1>
-    <div class="container row row-cols-xxl-auto" id="best-selling"></div>
-  </section>
-  <section class="container-sm">
-    <h1>You may need</h1>
-    <div class="btn-group" role="group">
-      <button type="button" onclick="categoryRender('Furniture')" class="btn btn-outline-primary">Furniture</button>
-      <button type="button" onclick="categoryRender('Education')" class="btn btn-outline-primary">Education</button>
-      <button type="button" onclick="categoryRender('Automotive')" class="btn btn-outline-primary">Automotive</button>
-      <button type="button" onclick="categoryRender('Clothes')" class="btn btn-outline-primary">Clothes</button>
-    </div>
-    <div class="container row row-cols-xxl-auto" id="category"></div>
-  </section>
-  <section class="container-sm">
-    <h1>All catalogue</h1>
-    <div class="container row row-cols-xxl-auto" id="all-catalogue"></div>
-  </section>
+<section class="container py-5">
+  <h2 class="mb-4">Best sellings</h2>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="best-selling"></div>
+</section>
+
+<section class="container py-5">
+  <h2 class="mb-4">Everything you need</h2>
+  <div class="btn-group mb-4 d-flex flex-wrap" role="group">
+    <button type="button" id="All" class="btn btn-outline-primary cat-btn" onclick="categoryRender('All')">All Products</button>
+    <button type="button" id="Furniture" class="btn btn-outline-primary cat-btn" onclick="categoryRender('Furniture')">Furniture</button>
+    <button type="button" id="Education" class="btn btn-outline-primary cat-btn" onclick="categoryRender('Education')">Education</button>
+    <button type="button" id="Automotive" class="btn btn-outline-primary cat-btn" onclick="categoryRender('Automotive')">Automotive</button>
+    <button type="button" id="Clothes" class="btn btn-outline-primary cat-btn" onclick="categoryRender('Clothes')">Clothes</button>
+  </div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="category"></div>
+</section>
+
   <footer class="bg-light text-center text-lg-start mt-5">
     <div class="text-center p-3">
       Website dibuat oleh 
