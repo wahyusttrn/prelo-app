@@ -1,7 +1,7 @@
 import USERS from '../db/USERS.js';
 
-const form = document.getElementById('loginForm');
-form.addEventListener('submit', login);
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', login);
 
 function login(loggedIn) {
   loggedIn.preventDefault();

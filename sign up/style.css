@@ -37,7 +37,7 @@ body {
     text-align: left;
   }
   
-  #email, #username, #password, #fullName {
+  #email, #username, #password, #namaLengkap {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
