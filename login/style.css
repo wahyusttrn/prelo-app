@@ -44,7 +44,17 @@ form {
   font-size: 14px;
 }
 
-#login, #signUp {
+#login {
+  padding: 10px;
+  border-radius: 30px;
+  border-style: hidden;
+  font-family: Impact;
+  font-size: larger;
+  background-color: rgb(65, 65, 255);
+  color: aliceblue;
+}
+
+.signUp {
   padding: 10px;
   border-radius: 30px;
   border-style: hidden;

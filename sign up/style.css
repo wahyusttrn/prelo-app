@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #e6f0ff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logo-prolo {
+    width: 200px;
+    height: 80%;
+  }
+  
+  .login-box {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+  }
+  
+  #email, #username, #password, #fullName {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  #login {
+    padding: 10px;
+    border-radius: 30px;
+    border-style: hidden;
+    font-family: Impact;
+    font-size: larger;
+    background-color: rgb(65, 65, 255);
+    color: aliceblue;
+  }
+  
+  .signUp {
+    padding: 10px;
+    border-radius: 30px;
+    border-style: hidden;
+    font-family: Impact;
+    font-size: larger;
+    background-color: rgb(65, 65, 255);
+    color: aliceblue;
+  }
+  
+  .mini-btn {
+    margin-left: auto;
+    width: fit-content;
+    justify-content:right;
+    padding: 8px 12px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
