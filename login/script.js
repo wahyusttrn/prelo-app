@@ -1,4 +1,4 @@
-import USER from '../db/user.js';
+import USERS from '../db/USERS.js';
 const form = document.getElementById('loginForm');
 form.addEventListener('submit', login);
 
@@ -19,8 +19,8 @@ function login(loggedIn) {
 
   let nameUser = "";
 
-  for (let i = 0; i < USER.length; i++) {
-    const { username, password, namaLengkap } = USER[i];
+  for (let i = 0; i < USERS.length; i++) {
+    const { username, password, namaLengkap } = USERS[i];
     if (usernameInput === username && passwordInput === password) {
       localStorage.setItem("loginStatus", JSON.stringify(true));
       localStorage.setItem("username", username);
