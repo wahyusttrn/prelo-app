@@ -73,7 +73,7 @@ function loadEditProfile() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   if (!user) {
     alert("Kamu harus login terlebih dahulu!");
-    window.location.href = "/login/"; 
+    window.location.href = "../login/"; 
     return;
   }
 
@@ -116,7 +116,7 @@ function loadEditProfile() {
 
     localStorage.setItem("currentUser", JSON.stringify(user));
     alert("Profil berhasil diperbarui!");
-    window.location.href = "/profile"; 
+    window.location.href = "./"; 
   });
 }
 

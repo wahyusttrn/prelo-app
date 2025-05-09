@@ -5,7 +5,7 @@ let counter = 0;
 let cart = [];
 function addToCart(id) {
   if (!localStorage.getItem("username")) {
-    location.href = '/login';
+    location.href = './login';
     return;
   }
   if (!id) {
@@ -18,7 +18,6 @@ function addToCart(id) {
   localStorage.setItem('cart', cart);
   document.getElementById('cart-count').innerText = localStorage.getItem('cart-count');
 }
-addToCart();
 
 //render best selling
 const sortedProduct = PRODUCTS.slice().sort((a, b) => b.sellings - a.sellings);
