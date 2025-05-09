@@ -39,6 +39,9 @@ window.addEventListener("DOMContentLoaded", loadUserProfile);
 // menghapus data login dari localStorage
 function logout() {
   localStorage.removeItem("currentUser");
+  localStorage.removeItem("loginStatus");
+  localStorage.removeItem("username");
+  localStorage.removeItem("namaLengkap");
   alert("Kamu berhasil logout!");
   window.location.href = "../login/"; 
 }
@@ -64,7 +67,7 @@ function loadEditProfile() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   if (!user) {
     alert("Kamu harus login terlebih dahulu!");
-    window.location.href = "../login/"; 
+    window.location.href = "/login/"; 
     return;
   }
 
@@ -107,7 +110,7 @@ function loadEditProfile() {
 
     localStorage.setItem("currentUser", JSON.stringify(user));
     alert("Profil berhasil diperbarui!");
-    window.location.href = "profile.html"; 
+    window.location.href = "/profile"; 
   });
 }
 
