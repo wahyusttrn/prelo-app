@@ -19,6 +19,13 @@ const USERS = [
     username: 'susanticuy',
     password: 'Susanti&20',
     namaLengkap: 'Susanti Cuy'
+  },
+  {
+  id: 4,
+  email: "Amar@Hacktiv8.ac",
+  username: "Amaroar",
+  password: "Kucing-123",
+  namaLengkap: "Amar Khishir",
   }
 ];
 

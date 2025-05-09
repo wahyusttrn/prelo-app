@@ -280,5 +280,7 @@ function removeFromCart(index) {
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCart(); 
 }
+checkLoginStatus();
+
 
 checkLoginStatus();
