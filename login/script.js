@@ -33,13 +33,11 @@ function login(loggedIn) {
   if (onlineUser) {   // true
     alert('Kamu berhasil login!');
     location.href = '../'; // Redirect ke halaman utama setelah login
-  } else {
-    alert('Maaf, kamu salah');
   }
 }
 
 function signUp() {
-  location.href = '../sign up/index.html'   // signup\index.html
+  location.href = '../sign up/'   // signup\index.html
 }
 
 function goBack() {

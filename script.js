@@ -1,13 +1,24 @@
 import PRODUCTS from "./db/PRODUCTS.js";
 
 //add to cart function
+let counter = 0;
+let cart = [];
 function addToCart(id) {
   if (!localStorage.getItem("username")) {
     location.href = '/login';
     return;
   }
-  alert(`Selamat! ${PRODUCTS[id-1].name} sudah masuk ke keranjang kamu!`);
+  if (!id) {
+    document.getElementById('cart-count').innerText = localStorage.getItem('cart-count');
+    return;
+  }
+  counter++;
+  localStorage.setItem('cart-count', counter);
+  cart.push(PRODUCTS[id-1]);
+  localStorage.setItem('cart', cart);
+  document.getElementById('cart-count').innerText = localStorage.getItem('cart-count');
 }
+addToCart();
 
 //render best selling
 const sortedProduct = PRODUCTS.slice().sort((a, b) => b.sellings - a.sellings);

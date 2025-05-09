@@ -1,3 +1,9 @@
+const URL = window.location.href;
+const URL_id = URL.split("#")[1];
+if (URL_id === 'cart') {
+  loadCart();
+}
+
 function checkLoginStatus() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   if (!user) {
