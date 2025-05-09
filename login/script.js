@@ -23,6 +23,8 @@ function login(loggedIn) {
       localStorage.setItem("loginStatus", JSON.stringify(true));      // set login status dengan true, karena bolean maka dirubah menjadi string
       localStorage.setItem("username", username); 
       localStorage.setItem("namaLengkap", namaLengkap); 
+      localStorage.setItem("currentUser", JSON.stringify(storedUsers[i]));
+      
       break;
     }
   }
