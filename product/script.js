@@ -1,42 +1,50 @@
 import PRODUCTS from "../db/PRODUCTS.js";
+const allProducts = JSON.parse(localStorage.getItem("ALLPRODUCTS")) || PRODUCTS;
 
 const URL = window.location.href;
 const URL_id = URL.split("#")[1];
-const product = PRODUCTS[URL_id-1];
-const formattedAmount = (product.price).toLocaleString('id-ID', { 
+const product = allProducts[URL_id-1];
+
+const formattedAmount = (Number(product.price)).toLocaleString('id-ID', { 
   style: 'currency', 
   currency: 'IDR' 
 });
 
 function addToCart() {
-  if (!localStorage.getItem('username')) {
-    alert('Anda belum login!');
-    location.href = '/login';
+  if (!localStorage.getItem("currentUser")) {
+    alert('Kamu harus login terlebih dahulu!');
+    location.href = '../login';
     return;
   }
-  alert(`Selamat! ${product.name} sudah masuk ke keranjang kamu!`);
+
+  allProducts[URL_id].stock -= 1;
+  localStorage.setItem('ALLPRODUCTS', JSON.stringify(allProducts));
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(product);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  productInfoRender();
 }
 window.addToCart = addToCart;
 
 document.getElementById('product-title').innerText = `Detail - ${product.name}`;
-
 document.getElementById('breadcrumb-title').innerText = product.name;
+document.getElementById('product-img').innerHTML = `<img src="${product.imgURL}" alt="${product.name}" class="img-fluid rounded shadow-sm" />`;
 
-document.getElementById('product-img').innerHTML = `
-  <img src="${product.imgURL}" alt="${product.name}" class="img-fluid rounded shadow-sm" />
-`;
-
-document.getElementById('product-info').innerHTML = `
-  <h2 class="fw-bold">${product.name}</h2>
-  <p class="text-muted mb-1">Kategori: <span class="badge bg-secondary">${product.category}</span></p>
-  <p class="text-muted mb-3">Diterbitkan oleh: <strong>${product.publisher}</strong></p>
-
-  <h4 class="text-primary mb-3">${formattedAmount}</h4>
-  <p class="mb-2">Stok tersedia: <strong>${product.stock}</strong></p>
-  <p class="mb-4">Total terjual: <strong>${product.sellings}</strong></p>
-
-  <button class="btn btn-primary btn-lg" onclick="addToCart()">Add to Cart</button>
-`;
+function productInfoRender() {
+  document.getElementById('product-info').innerHTML = `
+    <h2 class="fw-bold">${product.name}</h2>
+    <p class="text-muted mb-1">Kategori: <span class="badge bg-secondary">${product.category}</span></p>
+    <p class="text-muted mb-3">Diterbitkan oleh: <strong>${product.publisher}</strong></p>
+  
+    <h4 class="text-primary mb-3">${formattedAmount}</h4>
+    <p class="mb-2">Stok tersedia: <strong>${product.stock}</strong></p>
+    <p class="mb-4">Total terjual: <strong>${product.sellings}</strong></p>
+  
+    <button class="btn btn-primary btn-lg" onclick="addToCart()">Add to Cart</button>
+  `;
+}
+productInfoRender();
 
 let review = '';
 for (let i = 0; i < product.reviews.length; i++) {
@@ -57,7 +65,8 @@ for (let i = 0; i < product.reviews.length; i++) {
 document.getElementById('product-review').innerHTML = review;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const fullName = localStorage.getItem("namaLengkap");
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const fullName = user.namaLengkap;
   const productReviewsKey = `reviews_${product.id}`;
   const savedReviews = JSON.parse(localStorage.getItem(productReviewsKey)) || product.reviews;
 
@@ -70,9 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("reviewForm").addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!localStorage.getItem('username')) {
+    if (!localStorage.getItem('currentUser')) {
       alert('Anda belum login!');
-      location.href = '/login';
+      location.href = '../login';
       return;
     }
     const role = document.getElementById("role").value;
@@ -80,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const today = new Date().toLocaleDateString("id-ID");
 
     const newReview = {
-      id: Date.now(),
+      id: product.reviews.length+1,
       namaLengkap: fullName,
       role: role,
       date: today,
@@ -88,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     savedReviews.push(newReview);
-    localStorage.setItem(productReviewsKey, savedReviews);
+    localStorage.setItem(productReviewsKey, JSON.stringify(savedReviews));
 
     reviewContainer.innerHTML += generateReviewHTML(newReview);
     this.reset();

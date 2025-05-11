@@ -3,7 +3,7 @@ const PRODUCTS = [
     id: 1,
     name: 'Sofa Bekas',
     price: 3000000,
-    imgURL: '../public/product_img/sofa_bekas.jpg',
+    imgURL: 'https://vinotiliving.com/cdn/shop/products/Simplicity_Sofa_3_seat_vierra_gray_web.jpg?v=1645771769',
     publisher: 'Toko Pak Kumis',
     stock: 68,
     sellings: 200,

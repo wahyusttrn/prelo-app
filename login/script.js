@@ -1,48 +1,32 @@
 import USERS from '../db/USERS.js';
 
+if (localStorage.getItem('currentUser')) {
+  location.href = '../';
+}
+
 const loginForm = document.getElementById('loginForm');
 loginForm.addEventListener('submit', login);
 
-function login(loggedIn) {
-  loggedIn.preventDefault();
+function login(e) {
+  e.preventDefault();
   const usernameInput = document.getElementById('username').value;
   const passwordInput = document.getElementById('password').value;
-
-  // validasi input, apakah data sudah ada di local storage
-  let storedUsers = JSON.parse(localStorage.getItem('USERS'));
-  if (!storedUsers) {
-    storedUsers = USERS;
+  if (!usernameInput || !passwordInput) {
+    alert('Username atau password kosong!');
+    return;
   }
 
-  // mencari user yang sesuai dengan input
-  let onlineUser = false;
-  for (let i = 0; i < storedUsers.length; i++) {  // loop local storage
-    const { username, password, namaLengkap } = storedUsers[i]; 
-    if (usernameInput === username && passwordInput === password) {   // jika username dan password sesuai
-      onlineUser = true;  // maka onlineUser menjadi true  
-      localStorage.setItem("loginStatus", JSON.stringify(true));      // set login status dengan true, karena bolean maka dirubah menjadi string
-      localStorage.setItem("username", username); 
-      localStorage.setItem("namaLengkap", namaLengkap); 
-      localStorage.setItem("currentUser", JSON.stringify(storedUsers[i]));
-      
+  for (let i = 0; i < USERS.length; i++) {
+    const { username, password } = USERS[i]; 
+    if (usernameInput === username && passwordInput === password) {
+      localStorage.setItem("currentUser", JSON.stringify(USERS[i]));
+      alert('Kamu berhasil login!');
+      location.href = '../';
       break;
     }
   }
-
-  // alert apakah login berhasil atau tidak
-  if (onlineUser) {   // true
-    alert('Kamu berhasil login!');
-    location.href = '../'; // Redirect ke halaman utama setelah login
+  if (!localStorage.getItem('currentUser')) {
+    alert('Maaf, username atau password kamu salah!');
   }
+  return;
 }
-
-function signUp() {
-  location.href = '../sign up/'   // signup\index.html
-}
-
-function goBack() {
-  location.href = '../';      //this is how we get to parent directory
-}
-
-window.signUp  = signUp;
-window.goBack  = goBack;
