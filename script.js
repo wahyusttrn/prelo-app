@@ -1,30 +1,33 @@
 import PRODUCTS from "./db/PRODUCTS.js";
+const allProducts = JSON.parse(localStorage.getItem("ALLPRODUCTS")) || PRODUCTS;
 
-//add to cart function
-let counter = 0;
-let cart = [];
+//add to cart
 function addToCart(id) {
-  if (!localStorage.getItem("username")) {
+  if (!localStorage.getItem("currentUser")) {
+    alert('Kamu harus login terlebih dahulu!');
     location.href = './login';
     return;
   }
-  if (!id) {
-    document.getElementById('cart-count').innerText = localStorage.getItem('cart-count');
-    return;
-  }
-  counter++;
-  localStorage.setItem('cart-count', counter);
-  cart.push(PRODUCTS[id-1]);
-  localStorage.setItem('cart', cart);
-  document.getElementById('cart-count').innerText = localStorage.getItem('cart-count');
+
+  allProducts[id-1].stock -= 1;
+  localStorage.setItem('ALLPRODUCTS', JSON.stringify(allProducts));
+  renderBestSellings();
+  categoryRender('All');
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(allProducts[id-1]);
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  const cartCount = JSON.parse(localStorage.getItem("cart")).length || '';
+  document.getElementById('cart-count').innerText = cartCount;
 }
 
-//render best selling
-const sortedProduct = PRODUCTS.slice().sort((a, b) => b.sellings - a.sellings);
+
+const sortedProduct = allProducts.slice().sort((a, b) => b.sellings - a.sellings);
 function renderBestSellings() {
   let result = '';
   for (let i = 0; i < 4; i++) {
-    const formattedAmount = (sortedProduct[i].price).toLocaleString('id-ID', { 
+    const formattedAmount = (Number(sortedProduct[i].price)).toLocaleString('id-ID', { 
       style: 'currency', 
       currency: 'IDR' 
     });
@@ -35,7 +38,7 @@ function renderBestSellings() {
             <div style="width: 100%; height: 12rem"><img src="${sortedProduct[i].imgURL}" class="card-img-top" alt="${sortedProduct[i].name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
             <div class="card-body d-flex flex-column">
               <h5 class="card-title">${sortedProduct[i].name}</h5>
-              <p class="card-text text-muted">Sold: ${sortedProduct[i].sellings} Stock: ${sortedProduct[i].stock}</p>
+              <p class="card-text text-muted">Sold: ${sortedProduct[i].sellings} • Stock: ${sortedProduct[i].stock}</p>
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <span class="fw-bold text-primary">${formattedAmount}</span>
                 </a>
@@ -53,9 +56,9 @@ renderBestSellings();
 let result = '';
 function categoryRender(category) {
   result = '';
-  for (let i = 0; i < PRODUCTS.length; i++) {
-    const product = PRODUCTS[i];
-    const formattedAmount = (product.price).toLocaleString('id-ID', { 
+  for (let i = 0; i < allProducts.length; i++) {
+    const product = allProducts[i];
+    const formattedAmount = (Number(product.price)).toLocaleString('id-ID', { 
       style: 'currency', 
       currency: 'IDR' 
     });
@@ -67,7 +70,7 @@ function categoryRender(category) {
               <div style="width: 100%; height: 12rem"><img src="${product.imgURL}" class="card-img-top" alt="${product.name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.name}</h5>
-                <p class="card-text text-muted">Sold: ${product.sellings} Stock: ${product.stock}</p>
+                <p class="card-text text-muted">Sold: ${product.sellings} • Stock: ${product.stock}</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                 <span class="fw-bold text-primary">${formattedAmount}</span>
                 </a>
@@ -85,7 +88,7 @@ function categoryRender(category) {
               <div style="width: 100%; height: 12rem"><img src="${product.imgURL}" class="card-img-top" alt="${product.name}" style="object-fit: cover; width: 100%; height: 100%;"></div>
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.name}</h5>
-                <p class="card-text text-muted">Sold: ${product.sellings} Stock: ${product.stock}</p>
+                <p class="card-text text-muted">Sold: ${product.sellings} • Stock: ${product.stock}</p>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                 <span class="fw-bold text-primary">${formattedAmount}</span>
                 </a>
